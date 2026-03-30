@@ -1,0 +1,30 @@
+services:
+  backend:
+    build: ./backend
+    container_name: support-operations-backend
+    command: npm run dev -- --legacy-watch
+    environment:
+      - PORT=4000
+      - DB_PATH=/app/data/tickets.db
+      - CHOKIDAR_USEPOLLING=true
+    volumes:
+      - ./backend:/app
+      - /app/node_modules
+      - ./backend/data:/app/data
+    ports:
+      - "4000:4000"
+
+  frontend:
+    build: ./frontend
+    container_name: support-operations-frontend
+    environment:
+      - VITE_API_PROXY_TARGET=http://backend:4000
+      - CHOKIDAR_USEPOLLING=true
+    volumes:
+      - ./frontend:/app
+      - /app/node_modules
+    command: npm run dev
+    ports:
+      - "5173:5173"
+    depends_on:
+      - backend
