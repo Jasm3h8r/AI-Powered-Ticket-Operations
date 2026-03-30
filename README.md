@@ -1,8 +1,3 @@
-Nice — for a GitHub README, you want it to look **clean, scannable, and professional** (with proper Markdown, headers, and code blocks).
-
-Here’s a **README-optimized version (ready to paste into GitHub)**:
-
----
 
 # 🚀 AI-Powered Support Ticket Operations (v4)
 
